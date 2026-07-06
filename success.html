@@ -1,0 +1,479 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Success | Visual Architect</title>
+
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="mobile.css">
+    <link rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+
+    <style>
+
+        .success-bg{
+            background-image:url("assets/common-bg.jpg");
+            background-size:cover;
+            background-position:center;
+            background-repeat:no-repeat;
+        }
+
+        .success-main{
+            padding-top:130px;
+            width:90%;
+            margin:auto;
+        }
+
+        .success-title{
+           font-family: 'Montserrat', sans-serif;
+           font-size: 55px;
+           font-weight: 700;
+           text-transform: uppercase;
+           letter-spacing: 4px;
+
+           color: #ffb066;
+          -webkit-text-stroke: 2px #ff0000;
+
+          text-shadow:
+           0 0 4px #ff2222,
+           0 0 8px #ff6a00,
+           0 0 15px #ff6a00,
+           0 0 30px #ff0000,
+           0 0 60px #fd0404,
+           0 0 120px #ff0000;
+
+           margin: 0;
+           position: relative;
+           top: -105px;      /* மேலே ஏற்றும் */
+           text-align: center;
+        }
+
+        .success-subtitle{
+             color: #ffffff;
+          -webkit-text-stroke: 1px #ffffff;
+
+           letter-spacing: 3px;
+           position: relative;
+           top: -95px;      /* மேலே ஏற்றும் */
+           text-align: center;
+            margin-bottom:50px;
+        }
+
+        .section-title{
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          gap: 12px;
+
+          color: #ffb066;
+          -webkit-text-stroke: 1px #dc0a0ad5;
+
+          text-shadow:
+           0 0 4px #ff2222,
+           0 0 8px #ff6a00,
+           0 0 15px #ff6a00,
+           0 0 30px #ff0000,
+           0 0 60px #fd0404,
+           0 0 120px #ff0000;
+          font-size: 35px;
+          font-weight: 700;
+          position: relative;
+          top: -160px;
+
+          margin: 50px 0 30px;
+        }
+        .card-grid{
+         display: grid;
+         grid-template-columns: repeat(3, 1fr);
+         gap: 30px;
+
+         max-width: 1400px;
+         margin: 0 auto;
+
+        justify-items: center;
+        }
+        .card{
+        width:100%;
+        max-width:420px;
+
+        background: rgba(0,0,0,0.45);
+        backdrop-filter: blur(10px);
+
+        border: 2.5px solid #ff6a00;
+        border-radius: 18px;
+
+        overflow: hidden;
+
+         box-shadow:
+           0 0 10px rgba(255,106,0,0.7),
+           0 0 20px rgba(255,106,0,0.5),
+           0 0 35px rgba(255,106,0,0.35);
+
+        transition: all .35s ease;
+        position: relative;
+        top: -150px;
+        }
+        .card:hover{
+            transform:translateY(-8px);
+
+            box-shadow:
+            0 0 15px #ff6a00,
+            0 0 30px rgba(255,106,0,.4);
+        }
+
+        .card img{
+            width:100%;
+            height:180px;
+            object-fit:cover;
+        }
+
+        .card-body{
+            padding:18px;
+            text-align:center;
+        }
+
+        .card-body h3{
+            color:#fff;
+            margin-bottom:10px;
+        }
+
+        .card-body p{
+            color:#ccc;
+            font-size:14px;
+        }
+        .image-modal{
+          display:none;
+          position:fixed;
+          inset:0;
+
+          background:rgba(0,0,0,.9);
+
+          justify-content:center;
+          align-items:center;
+
+          z-index:9999;
+        }
+
+        .image-modal img{
+
+          max-width:90%;
+          max-height:90%;
+
+          border:3px solid #ff6a00;
+          border-radius:15px;
+
+         box-shadow:0 0 25px #ff6a00;
+        }
+
+        .close-btn{
+
+         position:absolute;
+        top:20px;
+        right:40px;
+
+        font-size:45px;
+        color:white;
+
+        cursor:pointer;
+        }
+
+        /* ---- SUCCESS PAGE MOBILE OVERRIDES ---- */
+        @media (max-width: 768px) {
+            html, body {
+                overflow-x: hidden !important;
+                overflow-y: auto !important;
+                height: auto !important;
+            }
+
+            .success-main {
+                padding-top: 80px !important;
+                width: 95% !important;
+            }
+
+            .success-title {
+                font-size: 2.2rem !important;
+                top: 0 !important;
+                position: relative !important;
+                -webkit-text-stroke: 1px #ff0000 !important;
+            }
+
+            .success-subtitle {
+                top: 0 !important;
+                position: relative !important;
+                font-size: 0.85rem !important;
+                letter-spacing: 1.5px !important;
+                margin-bottom: 1.5rem !important;
+            }
+
+            .section-title {
+                font-size: 1.6rem !important;
+                top: 0 !important;
+                position: relative !important;
+                margin: 1.5rem 0 1rem !important;
+            }
+
+            .card-grid {
+                grid-template-columns: repeat(2, 1fr) !important;
+                gap: 16px !important;
+            }
+
+            .card {
+                top: 0 !important;
+                position: relative !important;
+                max-width: 100% !important;
+            }
+
+            .card img {
+                height: 140px !important;
+            }
+
+            .card-body h3 {
+                font-size: 0.95rem !important;
+            }
+
+            .card-body p {
+                font-size: 12px !important;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .success-title {
+                font-size: 1.8rem !important;
+            }
+
+            .card-grid {
+                grid-template-columns: 1fr !important;
+            }
+
+            .card img {
+                height: 160px !important;
+            }
+        }
+    </style>
+
+</head>
+<body>
+
+<div class="page-bg success-bg"></div>
+<div class="bg-overlay"></div>
+
+<div class="container">
+
+<!-- Navbar Start -->
+<nav class="navbar">
+
+    <div class="logo">
+        <span class="orange">VISUAL</span>
+        <span class="white"> ARCHITECT</span>
+    </div>
+
+    <ul class="nav-links">
+        <li><a href="index.html">HOME</a></li>
+        <li><a href="about.html">ABOUT</a></li>
+        <li><a href="skills.html">SKILLS</a></li>
+        <li><a href="projects.html">PROJECTS</a></li>
+        <li><a href="contact.html">CONTACT</a></li>
+    </ul>
+
+    <button class="hamburger" id="hamburger-btn" aria-label="Open menu">
+        <svg viewBox="0 0 24 24"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+    </button>
+
+    <div class="nav-controls">
+        <button id="light-toggle" class="light-toggle" aria-label="Toggle Lighting">
+            <svg viewBox="0 0 24 24" stroke="currentColor" fill="none">
+                <circle cx="12" cy="12" r="4" stroke-width="2"/>
+                <path d="M12 3v2M12 19v2M5 12H3M21 12h-2M7.5 7.5L6 6M18 18l-1.5-1.5M7.5 16.5L6 18M18 6l-1.5 1.5" stroke-width="2"/>
+            </svg>
+        </button>
+    </div>
+
+</nav>
+
+<!-- Mobile Navigation Overlay -->
+<div class="mobile-nav-overlay" id="mobile-nav">
+    <button class="mobile-nav-close" id="mobile-nav-close" aria-label="Close menu">&times;</button>
+    <a href="index.html">HOME</a>
+    <a href="about.html">ABOUT</a>
+    <a href="skills.html">SKILLS</a>
+    <a href="projects.html">PROJECTS</a>
+    <a href="contact.html">CONTACT</a>
+</div>
+
+<main class="success-main">
+
+<h1 class="success-title">ACHIEVEMENTS</h1>
+
+<p class="success-subtitle">
+ CERTIFICATES • HACKATHONS • COURSES
+</p>
+
+<h2 class="section-title">
+<i class="fa-solid fa-award"></i>
+CERTIFICATES
+</h2>
+
+<div class="card-grid">
+
+<div class="card">
+
+<img src="assets/certificates/cer1.jpg" class="certificate-img" onclick="openImage(this.src)">
+
+<div class="card-body">
+
+<h3>PHP and MySQL</h3>
+
+<p>Spoken Tutorial developed at IIT Bombay</p>
+
+</div>
+
+</div>
+
+<div class="card">
+
+<img src="assets/certificates/cer2.jpg" class="certificate-img" onclick="openImage(this.src)">
+
+<div class="card-body">
+
+<h3>celonis</h3>
+
+<p>Great Learning</p>
+
+</div>
+
+</div>
+
+<div class="card">
+
+<img src="assets/certificates/cer3.jpg" class="certificate-img" onclick="openImage(this.src)">
+
+<div class="card-body">
+
+<h3>Automation Anywhere</h3>
+
+<p>Great Learning</p>
+</div>
+</div>
+
+<div class="card">
+
+<img src="assets/certificates/cer4.jpg" class="certificate-img" onclick="openImage(this.src)">
+
+<div class="card-body">
+
+<h3>2D/3D CAD Modeling</h3>
+
+<p>Bentley</p>
+
+</div>
+
+</div>
+
+<div class="card">
+
+<img src="assets/certificates/cer5.jpg" class="certificate-img" onclick="openImage(this.src)">
+
+<div class="card-body">
+
+<h3>Introducing web development</h3>
+
+<p>mindluster</p>
+
+</div>
+
+</div>
+
+<div class="card">
+
+<img src="assets/certificates/cer6.jpg" class="certificate-img" onclick="openImage(this.src)">
+
+<div class="card-body">
+
+<h3>Spoken English</h3>
+
+<p>isysway Technologies</p>
+
+</div>
+
+</div>
+</div>
+
+<h2 class="section-title">
+<i class="fa-solid fa-laptop-code"></i>
+HACKATHONS
+</h2>
+
+<div class="card-grid">
+
+<div class="card">
+
+<img src="assets/hackathon/hack1.jpg">
+
+<div class="card-body">
+
+<h3>National Hackathon</h3>
+
+<p>Participation Certificate</p>
+
+</div>
+
+</div>
+
+<div class="card">
+
+<img src="assets/hackathon/hack2.jpg">
+
+<div class="card-body">
+
+<h3>College Hackathon</h3>
+
+<p>Innovation Challenge</p>
+
+</div>
+
+</div>
+
+</div>
+
+</main>
+
+</div>
+<div id="imageModal" class="image-modal">
+
+    <span class="close-btn" onclick="closeImage()">&times;</span>
+
+    <img id="fullImage">
+
+</div>
+<script src="script.js"></script>
+<script>
+    // Mobile hamburger menu
+    const hamburgerBtn = document.getElementById('hamburger-btn');
+    const mobileNav = document.getElementById('mobile-nav');
+    const mobileNavClose = document.getElementById('mobile-nav-close');
+    if (hamburgerBtn && mobileNav) {
+        hamburgerBtn.addEventListener('click', () => mobileNav.classList.add('open'));
+        mobileNavClose.addEventListener('click', () => mobileNav.classList.remove('open'));
+        mobileNav.addEventListener('click', (e) => { if (e.target === mobileNav) mobileNav.classList.remove('open'); });
+    }
+</script>
+<script>
+
+function openImage(src){
+
+    document.getElementById("imageModal").style.display="flex";
+
+    document.getElementById("fullImage").src=src;
+
+}
+
+function closeImage(){
+
+    document.getElementById("imageModal").style.display="none";
+
+}
+
+</script>
+</body>
+</html>

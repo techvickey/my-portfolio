@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Visual Architect | Home</title>
+    <meta name="description" content="Portfolio of Vignesh, a Front-End Developer and Video Editor. Building digital experiences and crafting visual stories.">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="mobile.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+</head>
+<body>
+    <!-- Background -->
+    <div class="page-bg home-bg"></div>
+    <div class="bg-overlay"></div>
+
+    <div class="container">
+        <!-- Navbar Start -->
+
+    <nav class="navbar">
+
+        <div class="logo">
+            <span class="orange">VISUAL</span>
+            <span class="white"> ARCHITECT</span>
+        </div>
+
+        <ul class="nav-links">
+           <li><a href="index.html" class="active">HOME</a></li>
+           <li><a href="about.html">ABOUT</a></li>
+           <li><a href="skills.html">SKILLS</a></li>
+           <li><a href="projects.html">PROJECTS</a></li>
+           <li><a href="contact.html">CONTACT</a></li>
+        </ul>
+            <button class="hamburger" id="hamburger-btn" aria-label="Open menu">
+                <svg viewBox="0 0 24 24"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+            </button>
+            <div class="nav-controls">
+                <button id="light-toggle" class="light-toggle" aria-label="Toggle Lighting">
+                    <svg viewBox="0 0 24 24" stroke="currentColor" fill="none">
+                        <circle cx="12" cy="12" r="4" stroke-width="2"/>
+                        <path d="M12 3v2M12 19v2M5 12H3M21 12h-2M7.5 7.5L6 6M18 18l-1.5-1.5M7.5 16.5L6 18M18 6l-1.5 1.5" stroke-width="2"/>
+                    </svg>
+                </button>
+            </div>
+        </nav>
+
+        <!-- Mobile Navigation Overlay -->
+        <div class="mobile-nav-overlay" id="mobile-nav">
+            <button class="mobile-nav-close" id="mobile-nav-close" aria-label="Close menu">&times;</button>
+            <a href="index.html" class="active">HOME</a>
+            <a href="about.html">ABOUT</a>
+            <a href="skills.html">SKILLS</a>
+            <a href="projects.html">PROJECTS</a>
+            <a href="contact.html">CONTACT</a>
+        </div>
+
+        <!-- Main Content -->
+        <main class="home-main">
+            <!-- Hidden H1 for SEO -->
+            <h1 style="display:none;">Visual Architect</h1>
+            
+            <div class="hero-content">
+                <!-- The giant VISUAL ARCHITECT text is in the background image -->
+                
+                <div class="role-pill">
+                    <span id="role-text" style="transition: opacity 0.5s ease;">FRONT-END DEVELOPER</span>
+                </div>
+                
+                <p class="hero-subtitle">Building Digital Experiences & Crafting Visual Stories.</p>
+                
+                <div class="hero-buttons">
+                    <a href="projects.html" class="btn-primary">
+                        Explore My Work 
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M5 12h14M12 5l7 7-7 7"/>
+                        </svg>
+                    </a>
+                    <a href="contact.html" class="btn-outline">
+                        Contact Me 
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/>
+                            <circle cx="12" cy="7" r="4"/>
+                        </svg>
+                    </a>
+                </div>
+
+                <div class="social-icons">
+   <a href="https://github.com/FULLstackvickey" target="_blank" class="social-icon" aria-label="GitHub">
+        <i class="fa-brands fa-github"></i>
+   </a>
+
+    <a href="https://www.linkedin.com/in/creativevickey/" target="_blank" class="social-icon" aria-label="LinkedIn">
+       <i class="fa-brands fa-linkedin-in"></i>
+    </a>
+    <a href="mailto:vigneshwebdev46@gmail.com" class="social-icon" aria-label="Email">
+        <i class="far fa-envelope"></i>
+    </a>
+</div>
+            </div>
+
+            <div class="scroll-down">
+                <svg width="24" height="36" viewBox="0 0 24 36" fill="none" stroke="currentColor" stroke-width="2">
+                    <rect x="4" y="2" width="16" height="32" rx="8" />
+                    <line x1="12" y1="10" x2="12" y2="16" />
+                </svg>
+                <span>Scroll Down</span>
+            </div>
+        </main>
+    </div>
+
+    <script src="script.js"></script>
+    <script>
+        // Mobile hamburger menu
+        const hamburgerBtn = document.getElementById('hamburger-btn');
+        const mobileNav = document.getElementById('mobile-nav');
+        const mobileNavClose = document.getElementById('mobile-nav-close');
+        if (hamburgerBtn && mobileNav) {
+            hamburgerBtn.addEventListener('click', () => mobileNav.classList.add('open'));
+            mobileNavClose.addEventListener('click', () => mobileNav.classList.remove('open'));
+            mobileNav.addEventListener('click', (e) => { if (e.target === mobileNav) mobileNav.classList.remove('open'); });
+        }
+    </script>
+    <script>
+
+let navigating = false;
+
+window.addEventListener("wheel", function(e){
+
+    if(navigating) return;
+    navigating = true;
+
+    if(e.deltaY > 0){
+        window.location.href = "about.html";
+    }
+
+});
+</script>
+</body>
+</html>

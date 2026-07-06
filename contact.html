@@ -1,0 +1,972 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Visual Architect | Contact</title>
+    <meta name="description" content="Get in touch with me">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="mobile.css">
+    <style>
+        .contact-main {
+            padding-bottom: 2rem;
+        }
+        .contact-bg{
+            background-image:url('assets/common-bg.jpg');
+            background-size:cover;
+            background-position:center;
+            background-repeat:no-repeat;
+        }
+
+        .contact-grid{
+           display:grid;
+           grid-template-columns: 0.35fr 1fr;  /* 1fr 1.3fr */
+           gap:1.2rem;                          /* 2rem → 1.2rem */
+           margin-bottom:2rem;
+           position: relative;
+           top: -210px;
+        }
+
+        .contact-card{
+              background: var(--glass-bg);
+              backdrop-filter: blur(12px);
+              -webkit-backdrop-filter: blur(12px);
+              border: 1.5px solid #ff6a00;
+              border-radius: 12px;
+
+              padding: 1rem;          /* 1.5rem → 1rem */
+
+              box-shadow:
+                0 0 10px rgba(255,106,0,0.35),
+                0 0 20px rgba(255,106,0,0.15);
+              display: flex;
+              flex-direction: column;
+              height: fit-content;
+              align-self: start;
+        }
+        .contact-left-card{
+          position: relative;
+          left: 110px;
+          min-height: 395.5px;
+        }
+        .contact-card:last-child{
+           width: 60%;
+           justify-self: start;
+           position: relative;
+           left: 120px;
+        }
+        .contact-card-header {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1rem;
+        }
+
+        .contact-card-header svg {
+            width: 20px;
+            height: 20px;
+            stroke: var(--neon-orange);
+            fill: none;
+            stroke-width: 2;
+        }
+        .contact-card-header i{
+             font-size: 30px;          /* Size increase */
+             color: #ff6a00;           /* Orange */
+        }
+
+        .contact-card-header h3 {
+            font-family: var(--font-heading);
+            font-size: 1.3rem;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+
+        .contact-intro {
+            font-size: 0.8rem;
+            color: var(--text-secondary);
+            margin-bottom: 2.5rem;
+            line-height: 1.5;
+        }
+
+        /* Contact Info List */
+        .contact-info-list {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .info-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 1.5rem;
+        }
+
+        .info-icon {
+            color: var(--neon-orange);
+            margin-top: 0.2rem;
+        }
+
+        .info-icon svg {
+            width: 20px;
+            height: 20px;
+            stroke-width: 2;
+        }
+
+        .info-text {
+            display: flex;
+            flex-direction: column;
+            gap: 0.3rem;
+        }
+
+        .info-label {
+            font-size: 0.8rem;
+            color: var(--text-secondary);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-weight: 500;
+        }
+
+        .info-value {
+            font-size: 1rem;
+            color: #fff;
+            font-weight: 450;
+        }
+
+    
+        /* Form */
+        .contact-form {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.5rem;
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+
+        .form-label {
+            font-size: 0.85rem;
+            color: #fff;
+            font-weight: 500;
+        }
+
+        .input-wrapper {
+            position: relative;
+            display: flex;
+            align-items: center;
+        }
+
+        .form-input {
+            width: 100%;
+            background: rgba(0, 0, 0, 0.3);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 8px;
+            padding: 0.6rem;
+            color: #fff;
+            font-family: var(--font-body);
+            font-size: 0.8rem;
+            transition: all 0.3s;
+        }
+
+        .form-input:focus {
+            outline: none;
+            border-color: var(--neon-orange);
+            box-shadow: 0 0 10px rgba(255, 94, 0, 0.2);
+            background: rgba(0, 0, 0, 0.5);
+        }
+
+        .input-icon {
+            position: absolute;
+            right: 1rem;
+            color: var(--text-secondary);
+            pointer-events: none;
+        }
+        
+        .input-icon svg {
+            width: 18px;
+            height: 18px;
+            stroke-width: 1.5;
+        }
+
+        .form-input:focus + .input-icon {
+            color: var(--neon-orange);
+        }
+
+        textarea.form-input {
+            resize: vertical;
+            min-height: 70px;
+        }
+
+        .submit-btn {
+            background: var(--neon-orange);
+            color: #000;
+            font-weight: 600;
+            font-family: var(--font-body);
+            border: none;
+            padding: 0.7rem;
+            border-radius: 8px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.8rem;
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: all 0.3s;
+            margin-top: 1rem;
+        }
+
+        .submit-btn:hover {
+            box-shadow: 0 0 20px var(--neon-orange-dim);
+            transform: translateY(-2px);
+        }
+
+        /* Social Banner */
+        .social-banner {
+            background: var(--glass-bg);
+            backdrop-filter: blur(12px);
+            border: 1.5px solid #ff6a00;
+            box-shadow:
+                 0 0 10px rgba(255,106,0,0.4),
+                 0 0 20px rgba(255,106,0,0.2);
+            border-radius: 12px;
+            padding: -75px;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 1.5rem;
+            position: relative;
+            top: -236px;
+        }
+
+        .social-header {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            font-family: var(--font-heading);
+            font-size: 15px;
+            letter-spacing: 3px;
+            margin-bottom: -10px;
+            text-transform: uppercase;
+        }
+
+        .social-header::before,
+        .social-header::after {
+            content: '';
+            width: 40px;
+            height: 1px;
+            background: var(--neon-orange);
+            box-shadow: 0 0 5px var(--neon-orange);
+        }
+
+        .social-icons-large {
+            display: flex;
+            gap: 2rem;
+            justify-content: center;
+        }
+
+        .social-icon-large {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            border: 1px solid rgba(255, 94, 0, 0.3);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #fff;
+            position: relative;
+            top: -7px;
+            transition: all 0.3s;
+            background: rgba(0, 0, 0, 0.3);
+        }
+
+        .social-icon-large svg {
+            width: 24px;
+            height: 24px;
+            fill: currentColor;
+        }
+
+        .social-icon-large:hover {
+            background: var(--neon-orange);
+            color: #000;
+            box-shadow: 0 0 15px var(--neon-orange-dim);
+            border-color: var(--neon-orange);
+            transform: translateY(-3px);
+        }
+        
+        .social-icon-large.linkedin:hover {
+            background: #0077b5;
+            border-color: #0077b5;
+            box-shadow: 0 0 15px rgba(0, 119, 181, 0.5);
+            color: #fff;
+        }
+        
+        .social-icon-large.instagram:hover {
+            background: #E1306C;
+            border-color: #E1306C;
+            box-shadow: 0 0 15px rgba(225, 48, 108, 0.5);
+            color: #fff;
+        }
+
+        .footer {
+            margin-top: -280px;
+            text-align: center;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+            padding: 1rem 0;
+            border-top: 0.2px solid rgb(255, 255, 255);
+        }
+
+
+
+        /* Success Popup */
+        .popup-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            background: rgba(0, 0, 0, 0.8);
+            backdrop-filter: blur(5px);
+            z-index: 100;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.3s;
+        }
+
+        .popup-overlay.active {
+            opacity: 1;
+            pointer-events: all;
+        }
+
+        .popup-box {
+            background: var(--glass-bg);
+            border: 1px solid var(--neon-orange);
+            padding: 3rem;
+            border-radius: 12px;
+            text-align: center;
+            box-shadow: 0 0 30px rgba(255, 94, 0, 0.2);
+            transform: translateY(20px);
+            transition: transform 0.3s;
+            max-width: 400px;
+        }
+
+        .popup-overlay.active .popup-box {
+            transform: translateY(0);
+        }
+
+        .popup-icon {
+            width: 60px;
+            height: 60px;
+            color: var(--neon-orange);
+            margin: 0 auto 1.5rem;
+        }
+
+        .popup-box h3 {
+            font-family: var(--font-heading);
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .popup-box p {
+            color: var(--text-secondary);
+            margin-bottom: 2rem;
+        }
+
+        .popup-btn {
+            background: var(--neon-orange);
+            color: #000;
+            border: none;
+            padding: 0.8rem 2rem;
+            border-radius: 6px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: box-shadow 0.3s;
+        }
+
+        .popup-btn:hover {
+            box-shadow: 0 0 15px var(--neon-orange-dim);
+        }
+
+        @media (max-width: 900px) {
+            .contact-grid {
+                grid-template-columns: 1fr;
+            }
+            .form-row {
+                grid-template-columns: 1fr;
+            }
+            .footer {
+                flex-direction: column;
+                gap: 1rem;
+            }
+        }
+        .contact-subtitle{
+          font-size: 13.5px;
+          font-weight: 600;
+          position: relative;
+          top: -90px;
+          color: #ffffff;
+          text-align: center;
+          letter-spacing: 3px;
+          margin-bottom: 20px;
+          position: relative;
+        }
+
+        .contact-subtitle::before,
+        .contact-subtitle::after{
+          content: "";
+          display: inline-block;
+          width: 50px;
+          height: 3px;
+          background: var(--neon-orange);
+          margin: 0 20px;
+          vertical-align: middle;
+          box-shadow: 0 0 10px var(--neon-orange);
+        }
+        .contact-title{
+           font-family: 'Montserrat', sans-serif;
+           font-size: 55px;
+           font-weight: 700;
+           text-transform: uppercase;
+           letter-spacing: 4px;
+
+           color: #ffb066;
+          -webkit-text-stroke: 2px #ff0000;
+
+          text-shadow:
+           0 0 4px #ff2222,
+           0 0 8px #ff6a00,
+           0 0 15px #ff6a00,
+           0 0 30px #ff0000,
+           0 0 60px #fd0404,
+           0 0 120px #ff0000;
+
+           margin: 0;
+           position: relative;
+           top: -105px;      /* மேலே ஏற்றும் */
+           text-align: center;
+        }
+        .contact-description{
+          font-size: 15px;
+          color: #ffffff;
+          text-align: center;
+          position: relative;
+          top: -113px;
+          letter-spacing: 0.5px;
+          font-family: 'Poppins', sans-serif;
+        }
+        .linkedin i{
+          font-size: 28px !important;
+        }
+        /* LinkedIn Circle */
+         .social-icon-large.linkedin{
+    background: #0077B5;          /* LinkedIn Blue */
+    border: 2px solid #ff6a00;    /* Orange Border */
+    border-radius: 50%;
+}
+
+/* LinkedIn Icon */
+.social-icon-large.linkedin i{
+    color: #ffffff !important;    /* White "in" */
+    font-size: 28px;
+}
+
+/* Hover */
+.social-icon-large.linkedin:hover{
+    background: #005f8f;
+}
+
+.social-icon-large.linkedin:hover i{
+    color: #ffffff !important;
+}
+/* GitHub */
+.social-icon-large.github{
+    background: #ffffff;          /* White background */
+    border: 2px solid #ff6a00;    /* Orange border */
+    border-radius: 50%;
+}
+
+.social-icon-large.github i{
+    color: #000000 !important;    /* Black GitHub icon */
+    font-size: 30px;              /* Size adjust pannalam */
+}
+
+.social-icon-large.github:hover{
+    background: #ffffff;
+}
+
+.social-icon-large.github:hover i{
+    color: #000000 !important;
+}
+/* Instagram */
+.social-icon-large.instagram{
+    background: #ffffff;          /* White background */
+    border: 2px solid #ff6a00;    /* Orange border */
+    border-radius: 50%;
+}
+
+.social-icon-large.instagram i{
+    color: #da4661 !important;    /* Instagram Pink */
+    font-size: 30px;
+}
+
+.social-icon-large.instagram:hover{
+    background: #ffffff;
+}
+
+.social-icon-large.instagram:hover i{
+    color: #E4405F !important;
+}
+/* Email */
+.social-icon-large.email{
+    background: #ffffff;          /* White background */
+    border: 2px solid #ff6a00;    /* Orange border */
+    border-radius: 50%;
+}
+
+.social-icon-large.email i{
+    color: #e2932b !important;    /* Violet icon */
+    font-size: 30px;
+}
+
+.social-icon-large.email:hover{
+    background: #ffffff;
+}
+
+.social-icon-large.email:hover i{
+    color: #b81717 !important;    /* Hover-லும் Violet */
+}
+        /* Desktop: lock scroll. Mobile: override below */
+        html, body {
+             margin: 0;
+             padding: 0;
+             overflow: hidden;
+             height: 100vh;
+        }
+
+        /* ---- CONTACT PAGE MOBILE OVERRIDES ---- */
+        @media (max-width: 768px) {
+            html, body {
+                overflow-x: hidden !important;
+                overflow-y: auto !important;
+                height: auto !important;
+            }
+
+            .contact-subtitle {
+                font-size: 11px !important;
+                top: 0 !important;
+                position: relative !important;
+                letter-spacing: 2px !important;
+                margin-bottom: 5px !important;
+            }
+
+            .contact-title {
+                font-size: 2.2rem !important;
+                top: 0 !important;
+                position: relative !important;
+                -webkit-text-stroke: 1px #ff0000 !important;
+            }
+
+            .contact-description {
+                top: 0 !important;
+                position: relative !important;
+                font-size: 13px !important;
+                margin-bottom: 0.8rem !important;
+            }
+
+            .contact-grid {
+                grid-template-columns: 1fr !important;
+                top: 0 !important;
+                position: relative !important;
+                gap: 1.2rem !important;
+                margin-bottom: 1.5rem !important;
+            }
+
+            .contact-left-card {
+                left: 0 !important;
+                position: relative !important;
+                min-height: auto !important;
+            }
+
+            .contact-card:last-child {
+                width: 100% !important;
+                left: 0 !important;
+                position: relative !important;
+                justify-self: auto !important;
+            }
+
+            .form-row {
+                grid-template-columns: 1fr !important;
+                gap: 1rem !important;
+            }
+
+            .info-value {
+                font-size: 0.85rem !important;
+                word-break: break-word !important;
+            }
+
+            .social-banner {
+                top: 0 !important;
+                position: relative !important;
+                padding: 1.5rem 1rem !important;
+                margin-bottom: 1.5rem !important;
+            }
+
+            .social-icons-large {
+                gap: 1rem !important;
+                flex-wrap: wrap !important;
+                justify-content: center !important;
+            }
+
+            .footer {
+                margin-top: 1rem !important;
+                flex-direction: column !important;
+                gap: 0.5rem !important;
+                text-align: center !important;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .contact-title {
+                font-size: 1.8rem !important;
+            }
+            .contact-subtitle {
+                font-size: 9px !important;
+            }
+            .info-value {
+                font-size: 0.82rem !important;
+            }
+            .social-icons-large {
+                gap: 0.8rem !important;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="page-bg contact-bg"></div>
+    <div class="bg-overlay"></div>
+
+    <div class="container">
+        <!-- Navigation -->
+        <nav>
+            <div class="logo">
+                <div class="logo-icon">
+                    <svg viewBox="0 0 24 24" stroke="currentColor" fill="none">
+                        <rect x="3" y="7" width="18" height="13" rx="2" stroke-width="2"/>
+                        <circle cx="12" cy="13" r="4" stroke-width="2"/>
+                        <path d="M7 7V5a2 2 0 012-2h6a2 2 0 012 2v2" stroke-width="2"/>
+                    </svg>
+                </div>
+                <div class="logo-text">
+                    <span class="logo-subtitle">CODE. CREATE. CAPTURE.</span>
+                </div>
+            </div>
+
+            <div class="nav-links">
+                <a href="index.html">Home</a>
+                <a href="about.html">About</a>
+                <a href="skills.html">Skills</a>
+                <a href="projects.html">Projects</a>
+                <a href="contact.html" class="active">Contact</a>
+            </div>
+
+            <button class="hamburger" id="hamburger-btn" aria-label="Open menu">
+                <svg viewBox="0 0 24 24"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+            </button>
+
+            <div class="nav-controls">
+                <button id="light-toggle" class="light-toggle" aria-label="Toggle Lighting">
+                    <svg viewBox="0 0 24 24" stroke="currentColor" fill="none">
+                        <circle cx="12" cy="12" r="4" stroke-width="2"/>
+                        <path d="M12 3v2M12 19v2M5 12H3M21 12h-2M7.5 7.5L6 6M18 18l-1.5-1.5M7.5 16.5L6 18M18 6l-1.5 1.5" stroke-width="2"/>
+                    </svg>
+                </button>
+            </div>
+        </nav>
+
+        <!-- Mobile Navigation Overlay -->
+        <div class="mobile-nav-overlay" id="mobile-nav">
+            <button class="mobile-nav-close" id="mobile-nav-close" aria-label="Close menu">&times;</button>
+            <a href="index.html">HOME</a>
+            <a href="about.html">ABOUT</a>
+            <a href="skills.html">SKILLS</a>
+            <a href="projects.html">PROJECTS</a>
+            <a href="contact.html" class="active">CONTACT</a>
+        </div>
+
+        <main class="contact-main">
+            <div class="section-header">
+                <section class="contact-hero">
+                    <h3 class="contact-subtitle">LET'S WORK TOGETHER</h3>
+                   <h1 class="contact-title">GET IN TOUCH</h1>
+                   <p class="contact-description">
+                      Let's build something amazing together.
+                   </p>
+                </section>
+            </div>
+
+            <div class="contact-grid">
+                <!-- Contact Info -->
+                <div class="contact-card contact-left-card">
+                    <div class="contact-card-header">
+                        <svg viewBox="0 0 24 24">
+                            <path d="M22 2L11 13M22 2l-7 20-4-9-9-4 20-7z"/>
+                        </svg>
+                        <h3>LET'S CONNECT</h3>
+                    </div>
+                    <p class="contact-intro">Feel free to reach out to me through any of the following channels.</p>
+                    
+                    <div class="contact-info-list">
+                        <div class="info-item">
+                            <div class="info-icon">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                                    <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+                                    <circle cx="12" cy="10" r="3"></circle>
+                                </svg>
+                            </div>
+                            <div class="info-text">
+                                <span class="info-label">LOCATION</span>
+                                <span class="info-value">Tamil Nadu, India</span>
+                            </div>
+                        </div>
+                        
+                        <div class="info-item">
+                            <div class="info-icon">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                                    <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+                                    <polyline points="22,6 12,13 2,6"></polyline>
+                                </svg>
+                            </div>
+                            <div class="info-text">
+                                <span class="info-label">EMAIL</span>
+                                <span class="info-value">vigneshwebdev46@gmail.com</span>
+                            </div>
+                        </div>
+                        
+                        <div class="info-item">
+                            <div class="info-icon">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                                    <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
+                                </svg>
+                            </div>
+                            <div class="info-text">
+                                <span class="info-label">PHONE</span>
+                                <span class="info-value">+91-8903350718</span>
+                            </div>
+                        </div>
+
+                        <div class="info-item">
+                            <div class="info-icon">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                                    <path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path>
+                                    <path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path>
+                                </svg>
+                            </div>
+                            <div class="info-text">
+                                <span class="info-label">WEBSITE</span>
+                                <span class="info-value">www.visualarchitect.dev</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Contact Form -->
+                <div class="contact-card">
+                    <div class="contact-card-header">
+                        <i class="fa-regular fa-comment-dots" style="font-family: 20px;"></i>
+                        <h3>SEND ME A MESSAGE</h3>
+                    </div>
+                    <p class="contact-intro">Fill out the form below and I'll get back to you as soon as possible.</p>
+
+                    <!-- FormSubmit Ajax Form -->
+                    <form id="contact-form" class="contact-form" action="https://formsubmit.co/ajax/vigneshwebdev46@gmail.com" method="POST">
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label class="form-label">Your Name</label>
+                                <div class="input-wrapper">
+                                    <input type="text" name="name" class="form-input" placeholder="Enter your name" required>
+                                    <div class="input-icon">
+                                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label">Your Email</label>
+                                <div class="input-wrapper">
+                                    <input type="email" name="email" class="form-input" placeholder="Enter your email" required>
+                                    <div class="input-icon">
+                                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">Your Message</label>
+                            <div class="input-wrapper" style="align-items: flex-start;">
+                                <textarea name="message" class="form-input" placeholder="Type your message here..." required></textarea>
+                                <div class="input-icon" style="top: 1rem;">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"/></svg>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Anti-spam -->
+                        <input type="text" name="_honey" style="display:none">
+                        <!-- Disable Captcha since using Ajax might get tricky with it -->
+                        <input type="hidden" name="_captcha" value="false">
+
+                        <button type="submit" class="submit-btn" id="submit-btn">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <line x1="22" y1="2" x2="11" y2="13"/>
+                                <polygon points="22 2 15 22 11 13 2 9 22 2"/>
+                            </svg>
+                            SEND MESSAGE
+                        </button>
+                    </form>
+                </div>
+            </div>
+
+            <!-- Social Banner -->
+            <div class="social-banner">
+                <div class="social-header">FIND ME ON</div>
+                <div class="social-icons-large">
+
+                <a href="https://github.com/FULLstackvickey"class="social-icon-large github"target="_blank">
+                   <i class="fab fa-github"></i>
+                </a>
+                <a href="https://www.linkedin.com/in/creativevickey" class="social-icon-large linkedin" target="_blank">
+                   <i class="fa-brands fa-linkedin-in"></i>
+                </a>
+
+                <a href="https://www.instagram.com/the_bloody_leo46/"class="social-icon-large instagram"target="_blank">
+                   <i class="fab fa-instagram"></i>
+                </a>
+
+                <a href="mailto:vigneshwebdev46@gmail.com"class="social-icon-large email">
+                   <i class="fas fa-envelope"></i>
+                </a>
+                </div>
+                </div>
+            </div>
+
+            <!-- Footer -->
+            <footer class="footer">
+                <p>&copy; 2024 Visual Architect. All rights reserved.</p>
+                <p>Built with <span style="color:var(--neon-orange)">&#10084;</span> and passion</p>
+            </footer>
+        </main>
+    </div>
+
+    <!-- Success Popup -->
+    <div class="popup-overlay" id="success-popup">
+        <div class="popup-box">
+            <div class="popup-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
+                    <polyline points="22 4 12 14.01 9 11.01"></polyline>
+                </svg>
+            </div>
+            <h3>Message Sent!</h3>
+            <p>Thank you for reaching out. I will get back to you soon.</p>
+            <button class="popup-btn" id="close-popup">Great</button>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const form = document.getElementById('contact-form');
+            const popup = document.getElementById('success-popup');
+            const closePopupBtn = document.getElementById('close-popup');
+            const submitBtn = document.getElementById('submit-btn');
+
+            form.addEventListener('submit', async (e) => {
+                e.preventDefault();
+                
+                // Show loading state
+                const originalText = submitBtn.innerHTML;
+                submitBtn.innerHTML = '<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2v4m0 12v4M4.93 4.93l2.83 2.83m8.48 8.48l2.83 2.83M2 12h4m12 0h4M4.93 19.07l2.83-2.83m8.48-8.48l2.83-2.83" stroke-linecap="round" stroke-linejoin="round"/></svg> SENDING...';
+                submitBtn.style.opacity = '0.7';
+                submitBtn.disabled = true;
+
+                try {
+                    const formData = new FormData(form);
+                    
+                    const response = await fetch(form.action, {
+                        method: 'POST',
+                        body: formData,
+                        headers: {
+                            'Accept': 'application/json'
+                        }
+                    });
+                    console.log("Status:", response.status);
+                    console.log("OK:", response.ok);
+                    console.log(await response.text());
+
+                    if (response.ok) {
+                        // Show success popup
+                        popup.classList.add('active');
+                        form.reset();
+                    } else {
+                        alert("Oops! There was a problem submitting your form.");
+                    }
+                } catch (error) {
+                    alert("Oops! There was a problem submitting your form.");
+                } finally {
+                    // Reset button state
+                    submitBtn.innerHTML = originalText;
+                    submitBtn.style.opacity = '1';
+                    submitBtn.disabled = false;
+                }
+            });
+
+            closePopupBtn.addEventListener('click', () => {
+                popup.classList.remove('active');
+            });
+        });
+    </script>
+    <script>
+        // Mobile hamburger menu
+        const hamburgerBtn = document.getElementById('hamburger-btn');
+        const mobileNav = document.getElementById('mobile-nav');
+        const mobileNavClose = document.getElementById('mobile-nav-close');
+        if (hamburgerBtn && mobileNav) {
+            hamburgerBtn.addEventListener('click', () => mobileNav.classList.add('open'));
+            mobileNavClose.addEventListener('click', () => mobileNav.classList.remove('open'));
+            mobileNav.addEventListener('click', (e) => { if (e.target === mobileNav) mobileNav.classList.remove('open'); });
+        }
+    </script>
+    <script>
+// Wheel navigation — disabled on mobile to allow natural scrolling
+if (window.innerWidth > 768) {
+    let navigating = false;
+    window.addEventListener("wheel", function(e){
+        if(navigating) return;
+        navigating = true;
+        if(e.deltaY < 0){
+            window.location.href = "projects.html";
+        }
+    });
+}
+</script>
+</body>
+</html>
