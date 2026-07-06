@@ -1,0 +1,642 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Visual Architect | Projects</title>
+    <meta name="description" content="A collection of my recent work and personal projects.">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="mobile.css">
+    <style>
+        .projects-main {
+            padding-bottom: 4rem;
+        }
+
+        /* Filters */
+        .project-filters {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 1rem;
+            margin-bottom: 3rem;
+        }
+
+        .filter-btn {
+            background: transparent;
+            border: 1px solid var(--glass-border);
+            color: #fff;
+            padding: 0.6rem 2rem;
+            border-radius: 8px;
+            font-family: var(--font-body);
+            font-weight: 500;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .filter-btn:hover, .filter-btn.active {
+            background: var(--neon-orange);
+            border-color: var(--neon-orange);
+            color: #000;
+            box-shadow: 0 0 15px var(--neon-orange-dim);
+        }
+
+        /* Projects Grid */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+        }
+
+        .project-card {
+            background: var(--glass-bg);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid var(--glass-border);
+            border-radius: 12px;
+            overflow: hidden;
+            display: flex;
+            transition: all 0.3s ease;
+        }
+
+        .project-card:hover {
+            border-color: var(--neon-orange);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5), 0 0 15px var(--neon-orange-dim);
+        }
+
+        /* Card Layout Variations */
+        /* For standard web projects with image left, text right */
+        .project-img-container {
+            width: 45%;
+            background: rgba(0,0,0,0.4);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-right: 1px solid rgba(255,255,255,0.05);
+            padding: 1rem;
+            position: relative;
+        }
+        
+        /* Placeholder styling */
+        .img-placeholder {
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(255,94,0,0.1), rgba(0,0,0,0.5));
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--neon-orange);
+            border: 1px dashed rgba(255,94,0,0.3);
+        }
+        
+        .project-content {
+            width: 55%;
+            padding: 2rem;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .project-header {
+            display: flex;
+            align-items: flex-start;
+            gap: 1rem;
+            margin-bottom: 1rem;
+        }
+
+        .project-icon {
+            width: 40px;
+            height: 40px;
+            color: var(--neon-orange);
+            flex-shrink: 0;
+        }
+
+        .project-icon svg {
+            width: 100%;
+            height: 100%;
+            stroke-width: 1.5;
+        }
+
+        .project-title {
+            font-family: var(--font-heading);
+            font-size: 1.2rem;
+            font-weight: 600;
+            line-height: 1.3;
+        }
+
+        .project-desc {
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+            margin-bottom: 1.5rem;
+            line-height: 1.6;
+        }
+
+        .project-tech {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-bottom: 2rem;
+            margin-top: auto;
+        }
+
+        .tech-badge {
+            background: transparent;
+            border: 1px solid var(--neon-orange);
+            color: var(--text-secondary);
+            font-size: 0.75rem;
+            padding: 0.3rem 0.8rem;
+            border-radius: 4px;
+        }
+
+        .project-links {
+            display: flex;
+            gap: 1.5rem;
+        }
+
+        .project-link {
+            color: var(--neon-orange);
+            font-size: 0.85rem;
+            font-weight: 500;
+            display: flex;
+            align-items: center;
+            gap: 0.4rem;
+            transition: all 0.2s;
+        }
+
+        .project-link:hover {
+            color: #fff;
+            text-shadow: 0 0 8px var(--neon-orange);
+        }
+
+        .project-link svg {
+            width: 16px;
+            height: 16px;
+        }
+
+        /* Coming Soon Layouts (Video & Design) */
+        .coming-soon-card {
+            flex-direction: column;
+        }
+        .coming-soon-card .project-content {
+            width: 100%;
+            padding: 2rem;
+        }
+        
+        .cs-img-grid {
+            display: flex;
+            height: 150px;
+            gap: 10px;
+            padding: 1rem;
+            background: rgba(0,0,0,0.3);
+            border-bottom: 1px solid rgba(255,255,255,0.05);
+        }
+        
+        .cs-img-placeholder {
+            flex: 1;
+            background: rgba(255,94,0,0.05);
+            border: 1px dashed rgba(255,94,0,0.2);
+            border-radius: 6px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        /* CTA Banner */
+        .cta-banner {
+            background: var(--glass-bg);
+            backdrop-filter: blur(12px);
+            border: 1px solid var(--neon-orange);
+            border-radius: 12px;
+            padding: 1.5rem 3rem;
+            margin-top: 4rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            box-shadow: 0 0 20px var(--neon-orange-dim);
+        }
+
+        .cta-text {
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+        }
+
+        .cta-icon {
+            color: var(--neon-orange);
+            animation: float 3s ease-in-out infinite;
+        }
+        
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-5px); }
+        }
+
+        .cta-heading {
+            font-family: var(--font-heading);
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: var(--neon-orange);
+            margin-bottom: 0.3rem;
+        }
+
+        .cta-sub {
+            color: #ddd;
+            font-size: 0.95rem;
+        }
+
+        .cta-btn {
+            background: transparent;
+            border: 1px solid var(--neon-orange);
+            color: var(--neon-orange);
+            padding: 0.8rem 2rem;
+            border-radius: 8px;
+            font-weight: 600;
+            font-size: 0.9rem;
+            letter-spacing: 1px;
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+            transition: all 0.3s ease;
+        }
+
+        .cta-btn:hover {
+            background: var(--neon-orange);
+            color: #000;
+            box-shadow: 0 0 15px var(--neon-orange-glow);
+        }
+
+        @media (max-width: 900px) {
+            .projects-grid {
+                grid-template-columns: 1fr;
+            }
+            .cta-banner {
+                flex-direction: column;
+                text-align: center;
+                gap: 2rem;
+            }
+            .cta-text {
+                flex-direction: column;
+                gap: 1rem;
+            }
+        }
+        @media (max-width: 600px) {
+            .project-card {
+                flex-direction: column;
+            }
+            .project-img-container, .project-content {
+                width: 100%;
+            }
+            .project-img-container {
+                height: 200px;
+                border-right: none;
+                border-bottom: 1px solid rgba(255,255,255,0.05);
+            }
+        }
+        .projects-subtitle{
+          font-size: 20px;
+          font-weight: 600;
+          position: relative;
+          top: -20px;
+          color: #ffffff;
+          text-align: center;
+          letter-spacing: 3px;
+          margin-bottom: 20px;
+          position: relative;
+        }
+
+        .projects-subtitle::before,
+        .projects-subtitle::after{
+          content: "";
+          display: inline-block;
+          width: 50px;
+          height: 3px;
+          background: var(--neon-orange);
+          margin: 0 20px;
+          vertical-align: middle;
+          box-shadow: 0 0 10px var(--neon-orange);
+        }
+        .projects-title{
+           font-family: 'Montserrat', sans-serif;
+           font-size: 55px;
+           font-weight: 700;
+           text-transform: uppercase;
+           letter-spacing: 4px;
+
+           color: #ffb066;
+          -webkit-text-stroke: 2px #ff0000;
+
+          text-shadow:
+           0 0 4px #ff2222,
+           0 0 8px #ff6a00,
+           0 0 15px #ff6a00,
+           0 0 30px #ff0000,
+           0 0 60px #fd0404,
+           0 0 120px #ff0000;
+
+           margin: 0;
+           position: relative;
+           top: -30px;      /* மேலே ஏற்றும் */
+           text-align: center;
+}
+        .projects-description{
+          font-size: 15px;
+          color: #ffffff;
+          text-align: center;
+          position: relative;
+          top: -30px;
+          letter-spacing: 0.5px;
+          font-family: 'Poppins', sans-serif;
+        }
+        /* Mobile overflow fix */
+        @media (max-width: 768px) {
+            html, body {
+                overflow-x: hidden !important;
+                overflow-y: auto !important;
+                height: auto !important;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="page-bg common-bg"></div>
+    <div class="bg-overlay"></div>
+
+    <div class="container">
+        <!-- Navigation -->
+        <nav>
+            <div class="logo">
+                <div class="logo-icon">
+                    <svg viewBox="0 0 24 24" stroke="currentColor" fill="none">
+                        <rect x="3" y="7" width="18" height="13" rx="2" stroke-width="2"/>
+                        <circle cx="12" cy="13" r="4" stroke-width="2"/>
+                        <path d="M7 7V5a2 2 0 012-2h6a2 2 0 012 2v2" stroke-width="2"/>
+                    </svg>
+                </div>
+                <div class="logo-text">
+                    <span class="logo-subtitle">CODE. CREATE. CAPTURE.</span>
+                </div>
+            </div>
+
+            <div class="nav-links">
+                <a href="index.html">Home</a>
+                <a href="about.html">About</a>
+                <a href="skills.html">Skills</a>
+                <a href="projects.html" class="active">Projects</a>
+                <a href="contact.html">Contact</a>
+            </div>
+            <button class="hamburger" id="hamburger-btn" aria-label="Open menu">
+               <svg viewBox="0 0 24 24" stroke="currentColor" fill="none">
+                  <line x1="3" y1="6" x2="21" y2="6" stroke-width="2"/>
+                  <line x1="3" y1="12" x2="21" y2="12" stroke-width="2"/>
+                  <line x1="3" y1="18" x2="21" y2="18" stroke-width="2"/>
+               </svg>
+            </button>
+
+            <div class="nav-controls">
+                <button id="light-toggle" class="light-toggle" aria-label="Toggle Lighting">
+                    <svg viewBox="0 0 24 24" stroke="currentColor" fill="none">
+                        <circle cx="12" cy="12" r="4" stroke-width="2"/>
+                        <path d="M12 3v2M12 19v2M5 12H3M21 12h-2M7.5 7.5L6 6M18 18l-1.5-1.5M7.5 16.5L6 18M18 6l-1.5 1.5" stroke-width="2"/>
+                    </svg>
+                </button>
+            </div>
+        </nav>
+
+        <main class="projects-main">
+            <div class="section-header">
+                <section class="projects-hero">
+                    <h3 class="projects-subtitle">MY</h3>
+                   <h1 class="projects-title">PROJECTS</h1>
+                    <p class="projects-description">
+                        A collection of my recent work and personal projects.</p>
+                </section>
+            </div>
+
+            <div class="project-filters">
+                <button class="filter-btn active" data-filter="all">ALL</button>
+                <button class="filter-btn" data-filter="websites">WEBSITES</button>
+                <button class="filter-btn" data-filter="video">VIDEO EDITING</button>
+                <button class="filter-btn" data-filter="designs">DESIGNS</button>
+                <button class="filter-btn">
+                    +8 MORE 
+                    <svg style="width:14px; height:14px; display:inline-block; vertical-align:middle; margin-left:4px;" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+                </button>
+            </div>
+
+            <div class="projects-grid">
+                
+                <!-- Project 1 -->
+                <div class="project-card" data-category="websites">
+                    <div class="project-img-container">
+                        <div class="img-placeholder">
+                            <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+                        </div>
+                    </div>
+                    <div class="project-content">
+                        <div class="project-header">
+                            <div class="project-icon">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                                    <rect x="2" y="3" width="20" height="14" rx="2" ry="2"/>
+                                    <line x1="8" y1="21" x2="16" y2="21"/>
+                                    <line x1="12" y1="17" x2="12" y2="21"/>
+                                </svg>
+                            </div>
+                            <h3 class="project-title">HireHub -<br>Job Portal Website</h3>
+                        </div>
+                        <p class="project-desc">A modern job portal that connects job seekers with employers. Built with a clean and responsive UI.</p>
+                        <div class="project-tech">
+                            <span class="tech-badge">HTML</span>
+                            <span class="tech-badge">CSS</span>
+                            <span class="tech-badge">JavaScript</span>
+                        </div>
+                        <div class="project-links">
+                            <a href="#" class="project-link">
+                                Live Demo
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6M15 3h6v6M10 14L21 3"/></svg>
+                            </a>
+                            <a href="#" class="project-link">
+                                View Project &lt;/&gt;
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 2 -->
+                <div class="project-card" data-category="websites">
+                    <div class="project-img-container">
+                        <div class="img-placeholder">
+                            <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+                        </div>
+                    </div>
+                    <div class="project-content">
+                        <div class="project-header">
+                            <div class="project-icon">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                                    <circle cx="12" cy="12" r="10"/>
+                                    <line x1="2" y1="12" x2="22" y2="12"/>
+                                    <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/>
+                                </svg>
+                            </div>
+                            <h3 class="project-title">AI Multi-Language<br>Voice Translator</h3>
+                        </div>
+                        <p class="project-desc">AI based web application that translates voice input into multiple languages in real-time.</p>
+                        <div class="project-tech">
+                            <span class="tech-badge">HTML</span>
+                            <span class="tech-badge">CSS</span>
+                            <span class="tech-badge">JavaScript</span>
+                            <span class="tech-badge">AI API</span>
+                        </div>
+                        <div class="project-links">
+                            <a href="#" class="project-link">
+                                Live Demo
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6M15 3h6v6M10 14L21 3"/></svg>
+                            </a>
+                            <a href="#" class="project-link">
+                                View Project &lt;/&gt;
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 3 (Coming Soon) -->
+                <div class="project-card coming-soon-card" data-category="video">
+                    <div class="cs-img-grid">
+                        <div class="cs-img-placeholder">
+                            <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="var(--neon-orange)" stroke-width="1.5"><polygon points="23 7 16 12 23 17 23 7"></polygon><rect x="1" y="5" width="15" height="14" rx="2" ry="2"></rect></svg>
+                        </div>
+                    </div>
+                    <div class="project-content">
+                        <div class="project-header">
+                            <div class="project-icon">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                                    <polygon points="23 7 16 12 23 17 23 7"></polygon>
+                                    <rect x="1" y="5" width="15" height="14" rx="2" ry="2"></rect>
+                                </svg>
+                            </div>
+                            <h3 class="project-title">Video Editing</h3>
+                        </div>
+                        <p class="project-desc">Creative video editing projects coming soon.</p>
+                        <div class="project-links">
+                            <a href="#" class="project-link" style="color: #a0a0a0; border: 1px solid #333; padding: 0.5rem 1rem; border-radius: 6px;">
+                                View Showcase
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6M15 3h6v6M10 14L21 3"/></svg>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 4 (Coming Soon) -->
+                <div class="project-card coming-soon-card" data-category="designs">
+                    <div class="cs-img-grid">
+                        <div class="cs-img-placeholder"></div>
+                        <div class="cs-img-placeholder"></div>
+                        <div class="cs-img-placeholder"></div>
+                    </div>
+                    <div class="project-content">
+                        <div class="project-header">
+                            <div class="project-icon">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                                    <path d="M12 19l7-7 3 3-7 7-3-3z"></path>
+                                    <path d="M18 13l-1.5-7.5L2 2l3.5 14.5L13 18l5-5z"></path>
+                                    <path d="M2 2l7.586 7.586"></path>
+                                </svg>
+                            </div>
+                            <h3 class="project-title">Poster Design</h3>
+                        </div>
+                        <p class="project-desc">Poster design works will be updated soon.</p>
+                        <div class="project-links">
+                            <a href="#" class="project-link" style="color: #a0a0a0; border: 1px solid #333; padding: 0.5rem 1rem; border-radius: 6px;">
+                                View Designs
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6M15 3h6v6M10 14L21 3"/></svg>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- CTA Banner -->
+            <div class="cta-banner">
+                <div class="cta-text">
+                    <div class="cta-icon">
+                        <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                            <path d="M13.5 2H10c-1.1 0-2 .9-2 2v2H6c-1.1 0-2 .9-2 2v2H2v4h2v2c0 1.1.9 2 2 2h2v2c0 1.1.9 2 2 2h3.5"/>
+                            <path d="M13.5 22L22 13.5M22 13.5L13.5 5"/>
+                            <path d="M13.5 22L13.5 5"/>
+                            <circle cx="16" cy="11" r="1.5" fill="currentColor"/>
+                        </svg>
+                    </div>
+                    <div>
+                        <div class="cta-heading">Have a project in mind?</div>
+                        <div class="cta-sub">Let's work together and bring your ideas to life.</div>
+                    </div>
+                </div>
+                <a href="contact.html" class="cta-btn">
+                    LET'S CONNECT 
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M5 12h14M12 5l7 7-7 7"/>
+                    </svg>
+                </a>
+            </div>
+
+        </main>
+    </div>
+
+    <script src="script.js"></script>
+    <script>
+        // Mobile hamburger menu
+        const hamburgerBtn = document.getElementById('hamburger-btn');
+        const mobileNav = document.getElementById('mobile-nav');
+        const mobileNavClose = document.getElementById('mobile-nav-close');
+        if (hamburgerBtn && mobileNav) {
+            hamburgerBtn.addEventListener('click', () => mobileNav.classList.add('open'));
+            mobileNavClose.addEventListener('click', () => mobileNav.classList.remove('open'));
+            mobileNav.addEventListener('click', (e) => { if (e.target === mobileNav) mobileNav.classList.remove('open'); });
+        }
+    </script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const filterBtns = document.querySelectorAll('.filter-btn');
+            const projectCards = document.querySelectorAll('.project-card');
+
+            filterBtns.forEach(btn => {
+                btn.addEventListener('click', () => {
+                    // Ignore "+8 MORE" which acts as dropdown in design
+                    if (!btn.hasAttribute('data-filter')) return;
+
+                    // Remove active from all
+                    filterBtns.forEach(b => b.classList.remove('active'));
+                    btn.classList.add('active');
+
+                    const filterValue = btn.getAttribute('data-filter');
+
+                    projectCards.forEach(card => {
+                        if (filterValue === 'all' || card.getAttribute('data-category') === filterValue) {
+                            card.style.display = 'flex';
+                        } else {
+                            card.style.display = 'none';
+                        }
+                    });
+                });
+            });
+        });
+    </script>
+    <script>
+// Wheel navigation — disabled on mobile to allow natural scrolling
+if (window.innerWidth > 768) {
+    let navigating = false;
+    window.addEventListener("wheel", function(e){
+        if(navigating) return;
+        navigating = true;
+        if(e.deltaY > 0){
+            window.location.href = "contact.html";
+        } else {
+            window.location.href = "skills.html";
+        }
+    });
+}
+</script>
+</body>
+</html>

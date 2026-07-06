@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Visual Architect | About</title>
+    <meta name="description" content="About Vignesh - Full Stack Developer & Video Editor">
+    <link rel="stylesheet"
+         href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="mobile.css">
+    <style>
+        .about-main {
+            display: flex;
+            flex-direction: column;
+            gap: 4rem;
+            padding: 4rem 0;
+            min-height: auto;
+            justify-content: center;
+        }
+
+        .about-content{
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            margin-left: 470px;
+            align-items: center;
+
+            position: relative;
+            top: -400px;   /* value-ஐ -150px, -180px, -200px என்று adjust பண்ணு */
+        }
+        .photo-frame{
+          width:300px;
+          height:390px;
+          margin-left: 135px;
+          position: relative;
+          top: 40px;
+
+          border:3px solid #ff5100dd;
+          border-radius:25px;
+  
+          overflow:hidden;
+   
+          display:flex;
+          justify-content:center;
+          align-items:center;
+
+          border: 2px solid #ff5100dd;
+
+          box-shadow:
+           0 0 15px #000000dd,
+           0 0 30px rgba(255, 0, 0, 0.301);
+        }
+
+        .photo-frame img{
+           width:100%;
+           height:100%;
+
+           object-fit:cover;
+           object-position:center;
+        }
+
+        .about-text-container {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+
+        .about-label {
+            font-size: 1.3rem;
+            color: var(--neon-orange);
+            border-color: black;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            font-weight: 500;
+            position: relative;
+        }
+
+        .about-title {
+            font-family: var(--font-heading);
+            font-size: 2rem;
+            gap: 2px;
+            font-weight: 650;
+            line-height: 1.2;
+            position: relative;
+        }
+
+        .about-title span {
+          color: var(--neon-orange);
+          margin-left: 10px;   /* 10px gap */
+        }
+
+        .about-subtitle {
+            font-size: 1.4rem;
+            color: #ddd;
+            font-weight: 400;
+        }
+
+        .about-description {
+            font-size: 1.1rem;
+            color: var(--text-secondary);
+            line-height: 1.8;
+            max-width: 450px;
+            position: relative;
+        }
+    
+
+        .about-buttons{
+            display: flex;
+            gap: 2rem;
+
+            position: relative;
+            top: 80px;
+            left: -350px;   /* இதை adjust பண்ணு */
+        }
+        .stats-cards {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+        }
+
+        .stat-card {
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+        }
+        
+        .stat-card .icon {
+            color: var(--neon-orange);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 60px;
+            height: 60px;
+        }
+        
+        .stat-card .icon svg {
+            width: 40px;
+            height: 40px;
+            stroke-width: 1.5;
+        }
+
+        .stat-card-text {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .stat-card-title {
+            font-family: var(--font-heading);
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin-bottom: 0.2rem;
+            color: #fff;
+        }
+        
+        .stat-card-title span {
+            color: var(--neon-orange);
+            display: block;
+        }
+
+        .stat-card-line {
+            width: 40px;
+            height: 2px;
+            background: var(--neon-orange);
+            margin-top: 8px;
+            box-shadow: 0 0 5px var(--neon-orange);
+        }
+
+        @media (max-width: 900px) {
+            .about-content {
+                grid-template-columns: 1fr;
+            }
+            .stats-cards {
+                grid-template-columns: 1fr;
+            }
+        }
+        html,
+        body {
+             margin: 0;
+             padding: 0;
+             overflow: hidden;
+             height: 100vh;
+        }
+    </style>
+</head>
+<body>
+    <div class="page-bg common-bg"></div>
+    <div class="bg-overlay"></div>
+
+    <div class="container">
+        <!-- Navigation -->
+        <nav>
+            <div class="logo">
+                <div class="logo-icon">
+                    <svg viewBox="0 0 24 24" stroke="currentColor" fill="none">
+                        <rect x="3" y="7" width="18" height="13" rx="2" stroke-width="2"/>
+                        <circle cx="12" cy="13" r="4" stroke-width="2"/>
+                        <path d="M7 7V5a2 2 0 012-2h6a2 2 0 012 2v2" stroke-width="2"/>
+                    </svg>
+                </div>
+                <div class="logo-text">
+                    <span class="logo-subtitle">CODE. CREATE. CAPTURE.</span>
+                </div>
+            </div>
+
+            <div class="nav-links">
+                <a href="index.html">Home</a>
+                <a href="about.html" class="active">About</a>
+                <a href="skills.html">Skills</a>
+                <a href="projects.html">Projects</a>
+                <a href="contact.html">Contact</a>
+            </div>
+            <button class="hamburger" id="hamburger-btn" aria-label="Open menu">
+               <svg viewBox="0 0 24 24" stroke="currentColor" fill="none">
+                  <line x1="3" y1="6" x2="21" y2="6" stroke-width="2"/>
+                  <line x1="3" y1="12" x2="21" y2="12" stroke-width="2"/>
+                  <line x1="3" y1="18" x2="21" y2="18" stroke-width="2"/>
+               </svg>
+            </button>
+
+            <div class="nav-controls">
+                <button id="light-toggle" class="light-toggle" aria-label="Toggle Lighting">
+                    <svg viewBox="0 0 24 24" stroke="currentColor" fill="none">
+                        <circle cx="12" cy="12" r="4" stroke-width="2"/>
+                        <path d="M12 3v2M12 19v2M5 12H3M21 12h-2M7.5 7.5L6 6M18 18l-1.5-1.5M7.5 16.5L6 18M18 6l-1.5 1.5" stroke-width="2"/>
+                    </svg>
+                </button>
+            </div>
+        </nav>
+        </nav>
+    <div class="photo-frame">
+         <img src="assets/dp.png" alt="Vignesh">
+    </div>
+
+        <main class="about-main">
+            <div class="about-content">
+               
+                
+                <div class="about-text-container">
+                    <span class="about-label">ABOUT ME</span>
+                    <h1 class="about-title">Hi, I'M<span>VIGNESH</span></h1>
+                    <p class="about-description">
+                        I am a passionate-"Full Stack Developer", "Video Editor" and "UI/UX Designer".
+                        I enjoy creating modern websites and engaging digital experiences.
+                        Currently pursuing **B.E. Computer Science Engineering** and continuously improving my skills.
+                        I love combining creativity and technology to build meaningful projects.
+                        My goal is to create impactful digital solutions that inspire and help people. 🚀
+                    </p>
+                    
+                    <div class="about-buttons">
+                        <a href="success.html" class="btn-primary">
+                          <i class="fa-solid fa-award" style="font-size:20px;"></i>
+                           <span>MY SUCCESS</span>
+                        </a>
+                        <a href="projects.html" class="btn-outline">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"/>
+                            </svg>
+                            VIEW MY WORK
+                        </a>
+                        <a href="assets/resume.pdf" class="btn-primary" download>
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M7 10l5 5 5-5M12 15V3"/>
+                            </svg>
+                            DOWNLOAD RESUME
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script src="script.js"></script>
+    <script>
+let navigating = false;
+
+window.addEventListener("wheel", function(e){
+
+    if(navigating) return;
+    navigating = true;
+
+    if(e.deltaY > 0){
+        window.location.href = "skills.html";
+    } else {
+        window.location.href = "index.html";
+    }
+
+});
+</script>
+</body>
+</html>
